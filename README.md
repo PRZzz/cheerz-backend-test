@@ -5,11 +5,47 @@ Suggested solution for the [Problem Statement](./problem_statement.pdf) of Cheer
 * [Starting The Application](#starting-the-application)
 * [Database Structure](#database-structure)
 * [Future Developments](#future-developments)
+  * [Needed Evolutions](#needed-evolutions)
+  * [Code Maintenability](#code-maintenability)
+  * [Minor Improvements To Validate](#minor-improvements-to-validate)
+
+## Starting The Application
+
+To run locally the application, follow these steps:
+
+* Install Postgresql
+  * The chosen version must support `pgcrypto` and `plpgsql` extensions (I used version 14.12 when developing)
+* Install the ruby version specified in the `Gemfile`
+* Install dependencies: `bundle install`
+* Setup the database: `rails db:setup`
+* Run the server: `rails s`
 
 ## Database Structure
 
-TBD
+Database was created as simple as possible with a table for our users (`users`) and a table that can be seen as a "queue" (`fallback_usernames`) to hold usernames to fallback to when the user tries to signup with one already taken.
+
+The only specifity (which is still pretty common) is the use of UUID as primary key as I consider it more safe and future-proof.
 
 ## Future Developments
 
-TBD
+This project aims to be a **very** simple solution (and could be seen as a proof of concept). There is still a lot to be done if we want it to be production-ready.
+
+Below are lists of developments that would improve this project, organized by category.
+
+### Needed Evolutions
+
+All the listed evolutions here should be done as soon as possible.
+
+* Change default value for `username` columns in factory to a more robust method that uses `sequence` (cf [doc](https://github.com/thoughtbot/factory_bot/blob/main/GETTING_STARTED.md#inline-sequences)) to avoid the easy creation of flaky tests.
+
+### Code Maintenability
+
+If the project needs to grow, these are the subjects we can work on to make development easier.
+
+* Coding style guideline (e.g. rubocop)
+* Create seeds
+
+### Minor Improvements To Validate
+
+* Make `username` the primary key of the table `fallback_usernames`
+* Changes the `username` columns to a `VARCHAR(3)` (`limit: 3` in rails schema.db)
