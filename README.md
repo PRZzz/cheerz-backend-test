@@ -37,11 +37,13 @@ Below are lists of developments that would improve this project, organized by ca
 All the listed evolutions here should be done as soon as possible.
 
 * Change default value for `username` columns in factory to a more robust method that uses `sequence` (cf [doc](https://github.com/thoughtbot/factory_bot/blob/main/GETTING_STARTED.md#inline-sequences)) to avoid the easy creation of flaky tests.
+* Log / Alert somewhere when the error `NO_FALLBACK_USERNAME_FOUND_ERROR` is encountered.
 
 ### Code Maintenability
 
 If the project needs to grow, these are the subjects we can work on to make development easier.
 
+* Setup a CI/CD
 * Coding style guideline (e.g. rubocop)
 * Create seeds
 
