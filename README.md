@@ -45,7 +45,6 @@ If the project needs to grow, these are the subjects we can work on to make deve
 
 * Setup a CI/CD
 * Coding style guideline (e.g. rubocop)
-* Create seeds
 
 ### Minor Improvements To Validate
 
